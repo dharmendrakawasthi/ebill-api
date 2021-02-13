@@ -5,6 +5,6 @@
     <artifactId>ebill-api</artifactId>
     <version>${version}</version>
   </parent>
-  <artifactId>domain</artifactId>
-  <name>domain</name>
+  <artifactId>repository</artifactId>
+  <name>repository</name>
 </project>
