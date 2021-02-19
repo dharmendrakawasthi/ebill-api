@@ -40,7 +40,7 @@ public class User {
 	private Boolean status;
 	private String lastUpdateSummary;
 
-    @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	@JoinColumn(name = "USER_ID")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
 	private Set<Contact> contact;
+
 }

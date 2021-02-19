@@ -27,11 +27,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User updateUser(User user, Long id) throws Exception {
-		User existingUser = this.userRepository.findById(id).get();
-
-		if (existingUser.equals(user)) {
-			throw new Exception("User doesn't exists with id: " + id);
+	public User updateUser(User user) throws Exception {
+		User existingUser = this.userRepository.findById(user.getUserId()).get();
+		if (existingUser.getUserId() != user.getUserId()) {
+			throw new Exception("User doesn't exists with id: " + existingUser.getUserId());
 		}
 		return this.userRepository.save(user);
 	}

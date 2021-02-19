@@ -10,6 +10,6 @@ public interface UserService {
 
 	public User saveUser(User user);
 
-	public User updateUser(User user, Long id) throws Exception;
+	public User updateUser(User user) throws Exception;
 	
 }
