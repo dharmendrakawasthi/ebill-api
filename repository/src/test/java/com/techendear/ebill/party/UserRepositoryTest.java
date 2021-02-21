@@ -1,4 +1,4 @@
-package com.techendear.ebill;
+package com.techendear.ebill.party;
 
 import static org.junit.jupiter.api.Assertions.*;
 

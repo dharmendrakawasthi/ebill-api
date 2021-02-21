@@ -1,4 +1,4 @@
-package com.techendear.ebill.user;
+package com.techendear.ebill.party;
 
 import java.util.Map;
 
@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.techendear.ebill.party.Customer;
+import com.techendear.ebill.party.CustomerService;
 
 @RestController
 @RequestMapping("/api/v1/user")

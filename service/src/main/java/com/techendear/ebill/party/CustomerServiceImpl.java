@@ -1,4 +1,4 @@
-package com.techendear.ebill.user;
+package com.techendear.ebill.party;
 
 import java.util.List;
 import java.util.Map;
@@ -6,7 +6,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.techendear.ebill.util.MapToEntity;
+import com.techendear.ebill.party.Customer;
+import com.techendear.ebill.party.MapToEntity;
+import com.techendear.ebill.user.CustomerRepository;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {

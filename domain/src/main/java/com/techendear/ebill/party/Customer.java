@@ -1,4 +1,4 @@
-package com.techendear.ebill.user;
+package com.techendear.ebill.party;
 
 import java.sql.Timestamp;
 import java.util.HashSet;

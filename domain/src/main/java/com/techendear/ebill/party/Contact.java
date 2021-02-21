@@ -1,4 +1,4 @@
-package com.techendear.ebill.user;
+package com.techendear.ebill.party;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

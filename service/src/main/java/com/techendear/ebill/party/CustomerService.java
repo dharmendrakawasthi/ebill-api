@@ -1,7 +1,9 @@
-package com.techendear.ebill.user;
+package com.techendear.ebill.party;
 
 import java.util.List;
 import java.util.Map;
+
+import com.techendear.ebill.party.Customer;
 
 public interface CustomerService {
 

@@ -1,4 +1,4 @@
-package com.techendear.ebill.util;
+package com.techendear.ebill.party;
 
 import java.lang.reflect.Field;
 import java.util.Map;
