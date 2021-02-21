@@ -7,4 +7,6 @@ import com.techendear.ebill.party.Customer;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
+	
+//	public Page<Customer> findAll(Pageable pageable);
 }

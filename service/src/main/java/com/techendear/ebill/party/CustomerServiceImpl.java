@@ -1,14 +1,15 @@
 package com.techendear.ebill.party;
 
-import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.techendear.ebill.party.Customer;
-import com.techendear.ebill.party.MapToEntity;
 import com.techendear.ebill.user.CustomerRepository;
+import com.techendear.ebill.util.MapToEntity;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -17,36 +18,48 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerRepository customerRepository;
 
 	@Autowired
-	MapToEntity<Customer> updatedUser;
-	
+	MapToEntity<Customer> updatedcustomer;
+
 	@Override
-	public Customer getUserById(Long id) {
-		return this.customerRepository.findById(id).get();
+	public Optional<Customer> getCustomerById(Long id) throws Exception {
+		return this.customerRepository.findById(id);
 	}
 
 	@Override
-	public List<Customer> getAllUsers() {
-		return this.customerRepository.findAll();
+	public Optional<Page<Customer>> getAllCustomer() throws Exception {
+		return Optional.of(this.customerRepository.findAll(PageRequest.of(1, 10)));
 	}
 
 	@Override
-	public Customer saveUser(Customer customer) {
-		return this.customerRepository.save(customer);
+	public Optional<Customer> saveCustomer(Customer customer) throws Exception {
+		return Optional.of(this.customerRepository.save(customer));
 	}
 
 	@Override
-	public Customer updateUser(Customer customer) throws Exception {
-		Customer existingUser = this.customerRepository.findById(customer.getUserId()).get();
-		if (existingUser.getUserId() != customer.getUserId()) {
-			throw new Exception("Customer doesn't exists with id: " + existingUser.getUserId());
-		}
-		return this.customerRepository.save(customer);
+	public Optional<Customer> updateCustomer(Long id, Customer customer) throws Exception {
+		return this.customerRepository.findById(id).map(cust -> {
+			cust.setFirstName(customer.getFirstName());
+			cust.setMiddleName(customer.getMiddleName());
+			cust.setLastName(customer.getLastName());
+			cust.setType(customer.getType());
+			cust.setStatus(customer.getStatus());
+			cust.setLastUpdateSummary(customer.getLastUpdateSummary());
+//			cust.setContacts(customer.getContacts());
+			return this.customerRepository.save(cust);
+		});
 	}
 
 	@Override
-	public Customer patchUser(Long id, Map<Object, Object> fields) throws Exception {
-		Customer customer = this.customerRepository.findById(id).get();
-		this.updatedUser.mapToEntity(fields, customer);
-		return this.customerRepository.save(customer);
+	public Optional<Customer> patchCustomer(Long id, Map<Object, Object> fields) throws Exception {
+		return this.customerRepository.findById(id).map(cust -> {
+			this.updatedcustomer.mapToEntity(fields, cust);
+			return this.customerRepository.save(cust);
+		});
+	}
+
+	@Override
+	public Optional<Long> deleteCustomerById(Long id) throws Exception {
+		this.customerRepository.deleteById(id);
+		return Optional.of(id);
 	}
 }

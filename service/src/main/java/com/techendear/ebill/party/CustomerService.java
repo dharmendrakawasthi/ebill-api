@@ -1,20 +1,22 @@
 package com.techendear.ebill.party;
 
-import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
-import com.techendear.ebill.party.Customer;
+import org.springframework.data.domain.Page;
 
 public interface CustomerService {
 
-	public Customer getUserById(Long id);
+	public Optional<Customer> getCustomerById(Long id) throws Exception;;
 
-	public List<Customer> getAllUsers();
+	public Optional<Page<Customer>> getAllCustomer() throws Exception;
 
-	public Customer saveUser(Customer customer);
+	public Optional<Customer> saveCustomer(Customer customer) throws Exception;
 
-	public Customer updateUser(Customer customer) throws Exception;
+	public Optional<Customer> updateCustomer(Long id, Customer customer) throws Exception;
 
-	public Customer patchUser(Long id, Map<Object, Object> fields) throws Exception;
-	
+	public Optional<Customer> patchCustomer(Long id, Map<Object, Object> fields) throws Exception;
+
+	public Optional<Long> deleteCustomerById(Long id) throws Exception;
+
 }
