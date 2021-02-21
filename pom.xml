@@ -33,6 +33,12 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.5.2</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -46,5 +52,8 @@
 		<module>application</module>
 		<module>domain</module>
 		<module>repository</module>
+		<module>service</module>
+		<module>controller</module>
+		<module>common</module>
 	</modules>
 </project>
