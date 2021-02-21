@@ -1,35 +1,34 @@
 package com.techendear.ebill.user;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
-@ToString
-public class User {
+public class Customer {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "user_id", sequenceName = "user_id", initialValue = 10000, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id")
+	@Column(name = "user_id", nullable = false)
 	private Long userId;
 	private String firstName;
 	private String middleName;
@@ -40,7 +39,7 @@ public class User {
 	private Boolean status;
 	private String lastUpdateSummary;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
-	private Set<Contact> contact;
-
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+	private Set<Contact> contacts= new HashSet<>();
 }

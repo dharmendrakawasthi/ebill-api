@@ -1,5 +1,5 @@
 package com.techendear.ebill.user;
 
-public class UserServiceTest {
+public class CustomerServiceTest {
 
 }

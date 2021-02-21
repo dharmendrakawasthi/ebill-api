@@ -1,32 +1,27 @@
 package com.techendear.ebill.user;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
-@ToString
 public class Contact {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "contact_id", sequenceName = "contact_id", initialValue = 10000, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contact_id")
+	@Column(name = "contact_id", nullable = false)
 	private Long contactId;
 	private String type;
 	private String emails;
@@ -39,8 +34,4 @@ public class Contact {
 	private String country;
 	private String zipCode;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE,
-			CascadeType.REFRESH })
-	@JoinColumn(name = "user_id")
-	private User user;
 }
