@@ -18,5 +18,4 @@ public interface CustomerService {
 	public Optional<Customer> patchCustomer(Long id, Map<Object, Object> fields) throws Exception;
 
 	public Optional<Long> deleteCustomerById(Long id) throws Exception;
-
 }
