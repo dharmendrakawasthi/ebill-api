@@ -1,10 +1,10 @@
-package com.techendear.ebill;
+package com.techendear.ebill.party;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class UserRepositoryTest {
+class CustomerRepositoryTest {
 
 	@Test
 	void test() {

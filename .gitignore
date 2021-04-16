@@ -11,17 +11,17 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 
-*.classpath
-*.project
-*.settings/*
-.github
-*.project
-*.classpath
+#*.classpath
+#*.project
+#*.settings/*
+#.github
+#*.project
+#*.classpath
 
-application/.classpath
-application/.project
-application/.settings/
-application/pom.xml
-domain/.classpath
-domain/.project
-domain/.settings/
+#application/.classpath
+#application/.project
+#application/.settings/
+#application/pom.xml
+#domain/.classpath
+#omain/.project
+#domain/.settings/
