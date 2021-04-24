@@ -59,7 +59,7 @@ public class Customer {
 	private String middleName;
 	private String lastName;
 
-	@Column(nullable = false)
+//	@Column(nullable = false)
 	private String type;
 	private Boolean status;
 	private String lastUpdateSummary;
