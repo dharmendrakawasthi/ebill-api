@@ -30,14 +30,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EntityListeners({ AuditingEntityListener.class })
-public class Customer {
+public class Partner {
 
 	@Id
-	@SequenceGenerator(name = "user_id", sequenceName = "user_id", initialValue = 10000, allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id")
-	@Column(name = "user_id", nullable = false)
-	private Long customerId;
-
+	@SequenceGenerator(name = "partner_id", sequenceName = "partner_id", initialValue = 10000, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "partner_id")
+	@Column(name = "partner_id", nullable = false)
+	private Long partnerId;
+	
 	@Column(name = "created_date", nullable = false, updatable = false)
 	@CreatedDate
 	private Timestamp createdDate;
@@ -53,16 +53,11 @@ public class Customer {
 	@Column(name = "modified_by")
 	@LastModifiedBy
 	private String modifiedBy;
-
-	@Column(nullable = false)
-	private String firstName;
-	private String middleName;
-	private String lastName;
-	private String type;
-	private Boolean status;
+	private String name;
+	private String vat;
 	private String lastUpdateSummary;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
-	private Set<Contact> contacts = new HashSet<>();
+	@JoinColumn(name = "partner_id", referencedColumnName = "partner_id")
+	private Set<Contact> contacts = new HashSet<>(); 
 }
